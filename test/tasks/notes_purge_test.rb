@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'rake'
+require "test_helper"
+require "rake"
 
 # @note purge setting is set to 2.days in config/environments/test.rb
 class NotesPurgeTaskTest < ActiveSupport::TestCase
