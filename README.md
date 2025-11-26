@@ -36,3 +36,10 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 ## Deployment
 
 TODO
+
+### Cron Jobs
+
+```
+# Check for any notes to purge everyday at 2am
+* 2 * * * bin/rails notes:purge
+```

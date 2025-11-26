@@ -35,5 +35,11 @@ module Notes
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Auto-delete notes after this much time [Duration, #ago]
+    # You can override this setting from the Environment key PURGE_NOTES_AFTER_DAYS
+    # OR you can set a Duration directly here, for example: `1.month`
+    # https://api.rubyonrails.org/classes/ActiveSupport/Duration.html
+    config.x.purge_notes_after = ENV.fetch("PURGE_NOTES_AFTER_DAYS", "30").to_i.days
   end
 end

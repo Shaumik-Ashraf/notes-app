@@ -53,4 +53,7 @@ Rails.application.configure do
 
   # Encrypt records for test
   config.active_record.encryption.encrypt_fixtures = true
+
+  # Override purge setting for test
+  config.x.purge_notes_after = 2.days
 end
