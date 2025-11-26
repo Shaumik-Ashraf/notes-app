@@ -43,3 +43,10 @@ TODO
 # Check for any notes to purge everyday at 2am
 * 2 * * * bin/rails notes:purge
 ```
+
+### Environment
+
+```
+# Set to integer to autodelete notes after that many days; defaults to 30
+PURGE_NOTES_AFTER_DAYS=30
+```
