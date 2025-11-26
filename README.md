@@ -1,8 +1,14 @@
 # Notes App
 
+> Work In Progress
+
 This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
-## Features
+## TODO:
+
+- beautify & turbofy UI
+
+## Features _(work in progress)_
 
 - Data encryption at rest
 - Data encryption in transit
