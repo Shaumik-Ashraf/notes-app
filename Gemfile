@@ -62,3 +62,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Markdown rendering
+gem "redcarpet", "~> 3.6"
