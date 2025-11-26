@@ -1,24 +1,38 @@
-# README
+# Notes App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Data encryption at rest
+- Data encryption in transit
+- Automatic note deletion after 30 days
+- Lightweight application
+- Server-side rendering and data control
+- Production-ready for AWS
+- Continuous Integration for better DevOps
 
-* System dependencies
+## Dependencies
 
-* Configuration
+- Ruby 3.4.3
 
-* Database creation
+### Tech Stack
 
-* Database initialization
+- SQLite3
+- Propshaft asset pipeline
+- Importmap
+- Simple CSS
+- Solid Queue, Cache, & Cable
+- Thruster
 
-* How to run the test suite
+## Quick Start
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone repository
+2. `bundle install`
+3. `bin/rails db:migrate`
+4. `bin/rails server`
+5. Open <http://localhost:3000>
 
-* Deployment instructions
+## Deployment
 
-* ...
+TODO
