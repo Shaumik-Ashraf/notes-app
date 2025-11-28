@@ -4,7 +4,7 @@
   </header>
 
   <section>
-    <h2>Create New Note</h2>
+    <h2>Add Note</h2>
     <%= turbo_frame_tag "new_note" do %>
       <%= render "form", note: Note.new %>
     <% end %>
