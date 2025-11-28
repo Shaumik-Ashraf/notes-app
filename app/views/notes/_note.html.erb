@@ -1,7 +1,10 @@
-<div id="<%= dom_id note %>">
-  <div>
-    <strong>Body:</strong>
-    <%= note.body %>
-  </div>
-
-</div>
+<article id="<%= dom_id note %>">
+  <p><%= note.body %></p>
+  <footer>
+    <small>Created <%= time_ago_in_words(note.created_at) %> ago</small>
+    <div>
+      <%= link_to "Edit", edit_note_path(note), data: { turbo_frame: dom_id(note) } %>
+      <%= button_to "Delete", note_path(note), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    </div>
+  </footer>
+</article>

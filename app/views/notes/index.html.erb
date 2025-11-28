@@ -1,16 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<main>
+  <header>
+    <h1>Notes</h1>
+  </header>
 
-<% content_for :title, "Notes" %>
+  <section>
+    <h2>Create New Note</h2>
+    <%= turbo_frame_tag "new_note" do %>
+      <%= render "form", note: Note.new %>
+    <% end %>
+  </section>
 
-<h1>Notes</h1>
-
-<div id="notes">
-  <% @notes.each do |note| %>
-    <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New note", new_note_path %>
+  <section>
+    <h2>All Notes</h2>
+    <%= turbo_stream_from "notes" %>
+    <div id="notes">
+      <% if @notes.any? %>
+        <% @notes.each do |note| %>
+          <%= turbo_frame_tag dom_id(note) do %>
+            <%= render note %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>No notes yet. Create your first note above!</p>
+      <% end %>
+    </div>
+  </section>
+</main>

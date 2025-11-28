@@ -24,7 +24,10 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to @note, notice: "Note was successfully created."
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @note, notice: "Note was successfully created." }
+      end
     else
       render :new, status: :unprocessable_content
     end
@@ -33,7 +36,10 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   def update
     if @note.update(note_params)
-      redirect_to @note, notice: "Note was successfully updated.", status: :see_other
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @note, notice: "Note was successfully updated.", status: :see_other }
+      end
     else
       render :edit, status: :unprocessable_content
     end
@@ -42,7 +48,10 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   def destroy
     @note.destroy!
-    redirect_to notes_path, notice: "Note was successfully destroyed.", status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to notes_path, notice: "Note was successfully destroyed.", status: :see_other }
+    end
   end
 
   private
