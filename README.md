@@ -6,7 +6,8 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 ## TODO:
 
-- beautify & turbofy UI
+- add dev credentials
+- test solid cable w/ turbo stream
 
 ## Features _(work in progress)_
 
@@ -35,9 +36,28 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 1. Clone repository
 2. `bundle install`
-3. `bin/rails db:migrate`
-4. `bin/rails server`
-5. Open <http://localhost:3000>
+3. If it's your first time setup, obtain config/credentials/development.key
+   OR create your own secure-random secrets:
+
+```bash
+rm config/credentials/development*
+bin/rails secret
+bin/rails db:credentials:init
+EDITOR=nano bin/rails credentials:edit -e development
+```
+
+When in editor, create a file like so:
+
+```yml
+secret_key_base: <rails secret output>
+
+active_record_encryption:
+  <corresponding rails db:credentials:init output>
+```
+
+4. `bin/rails db:migrate`
+5. `bin/rails server`
+6. Open <http://localhost:3000>
 
 ## Deployment
 
