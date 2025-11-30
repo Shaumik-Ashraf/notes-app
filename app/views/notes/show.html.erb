@@ -1,14 +1,14 @@
-<small>Created <%= time_ago_in_words @note.created_at %></small>
+<% content_for :title do %>
+  <%= @note.title %>
+<% end %>
+
+<p>
+  Created <%= time_format @note.created_at %>.
+  <% if @note.updated_at > @note.created_at %>
+    Last edited <%= time_format @note.updated_at %>
+  <% end %>
+</p>
 
 <div id="<%= dom_id @note %>">
   <%= markdown @note.body %>
-</div>
-
-<div>
-  <%= link_to "Edit", edit_note_path(@note) %> |
-  <%= link_to "Back to notes", notes_path %>
-</div>
-
-<div>
-  <%= button_to "Delete", @note, method: :delete %>
 </div>
