@@ -1,5 +1,11 @@
+<% if false %> TODO DEBUG
+  <%= turbo_frame_tag "alert" do %>
+    <span style="color: green">Note saved successfully.</span>
+  <% end %>
+<% end %>
+
 <%= turbo_stream.replace dom_id(@note) do %>
   <%= turbo_frame_tag dom_id(@note) do %>
-    <%= render @note %>
+    <%= render "form", note: @note %>
   <% end %>
 <% end %>

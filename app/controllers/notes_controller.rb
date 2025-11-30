@@ -38,7 +38,7 @@ class NotesController < ApplicationController
     if @note.update(note_params)
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @note, notice: "Note was successfully updated.", status: :see_other }
+        format.html { redirect_to notes_path, notice: "Note was successfully updated.", status: :see_other }
       end
     else
       render :edit, status: :unprocessable_content
