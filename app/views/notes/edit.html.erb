@@ -12,5 +12,6 @@
 <% end %>
 
 <div>
+  <%= button_to "Fullscreen", @note, method: :get %>
   <%= button_to "Delete", @note, method: :delete, data: { turbo_frame: "_top" } %>
 </div>
