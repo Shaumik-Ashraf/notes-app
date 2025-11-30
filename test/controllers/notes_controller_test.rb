@@ -35,7 +35,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update note" do
     patch note_url(@note), params: { note: { body: @note.body } }
-    assert_redirected_to note_url(@note)
+    assert_redirected_to notes_url
   end
 
   test "should destroy note" do
