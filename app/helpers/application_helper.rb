@@ -1,7 +1,7 @@
 module ApplicationHelper
   MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true, strikethrough: true, superscript: true)
   TIME_FORMAT = "%r %x"
-  
+
   # @param s [String]
   def markdown(s)
     sanitize MARKDOWN.render(s)
