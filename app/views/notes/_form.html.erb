@@ -12,12 +12,12 @@
   <% end %>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body, rows: 4, placeholder: "Write your note here..." %>
+    <%= form.label :body, style: "display: none" %>
+    <%= form.text_area :body, rows: 4, placeholder: "Write your note in Markdown" %>
   </div>
 
   <div>
-    <%= form.submit note.new_record? ? "Create Note" : "Update Note" %>
+    <%= form.submit "Save" %>
     <% unless note.new_record? %>
       <%= link_to "Cancel", notes_path, data: { turbo_frame: "_top" } %>
     <% end %>

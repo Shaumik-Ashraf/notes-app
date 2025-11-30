@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<small>Created <%= time_ago_in_words @note.created_at %></small>
 
-<%= render @note %>
+<div id="<%= dom_id @note %>">
+  <%= markdown @note.body %>
+</div>
 
 <div>
-  <%= link_to "Edit this note", edit_note_path(@note) %> |
+  <%= link_to "Edit", edit_note_path(@note) %> |
   <%= link_to "Back to notes", notes_path %>
+</div>
 
-  <%= button_to "Destroy this note", @note, method: :delete %>
+<div>
+  <%= button_to "Delete", @note, method: :delete %>
 </div>

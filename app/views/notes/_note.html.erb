@@ -1,5 +1,5 @@
-<article id="<%= dom_id note %>">
-  <%= link_to note do %>
+<div id="<%= dom_id note %>">
+  <%= link_to edit_note_path(note), data: { turbo_frame: "_top" } do %>
     <%= markdown note.title %>
   <% end %>
-</article>
+</div>
