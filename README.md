@@ -25,7 +25,7 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 ### Tech Stack
 
-- SQLite3
+- PostgreSQL 16
 - Propshaft asset pipeline
 - Importmap
 - Simple CSS
@@ -35,8 +35,9 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 ## Quick Start
 
 1. Clone repository
-2. `bundle install`
-3. If it's your first time setup, obtain config/credentials/development.key
+2. Ensure PostgreSQL 16 is installed and running
+3. `bundle install`
+4. If it's your first time setup, obtain config/credentials/development.key
    OR create your own secure-random secrets:
 
 ```bash
@@ -55,9 +56,9 @@ active_record_encryption:
   <corresponding rails db:credentials:init output>
 ```
 
-4. `bin/rails db:migrate`
-5. `bin/rails server`
-6. Open <http://localhost:3000>
+5. `bin/rails db:create db:migrate`
+6. `bin/rails server`
+7. Open <http://localhost:3000>
 
 ## Deployment
 
