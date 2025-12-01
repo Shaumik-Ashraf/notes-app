@@ -5,10 +5,12 @@
 <h1>Editing Note #<%= @note.id %></h1>
 
 <p>
-  Created <%= time_ago_in_words(@note.created_at) %> ago.
-  <% if @note.updated_at - @note.created_at > 1.minute %>
-    Last saved <%= time_ago_in_words(@note.updated_at) %> ago.
-  <% end %>
+  <small>
+    Created <%= time_ago_in_words(@note.created_at) %> ago.
+    <% if @note.updated_at - @note.created_at > 1.minute %>
+      Last saved <%= time_ago_in_words(@note.updated_at) %> ago.
+    <% end %>
+  </small>
 </p>
 
 <%= turbo_frame_tag dom_id(@note) do %>

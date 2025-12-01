@@ -19,7 +19,7 @@
   <div>
     <%= form.submit "Save" %>
     <% unless note.new_record? %>
-      <%= link_to "Cancel", notes_path, data: { turbo_frame: "_top" } %>
+      <%= link_to "Back", notes_path, data: { turbo_frame: "_top" } %>
     <% end %>
   </div>
 <% end %>
