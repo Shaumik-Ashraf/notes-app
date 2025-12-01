@@ -4,14 +4,13 @@
   </header>
 
   <section>
-    <h2>Add Note</h2>
     <%= turbo_frame_tag "new_note" do %>
       <%= render "form", note: Note.new %>
     <% end %>
   </section>
 
   <section>
-    <h2>All Notes</h2>
+    <p><b>Your Notes</b></p>
     <%= turbo_stream_from "notes" %>
     <div id="notes">
       <% if @notes.any? %>

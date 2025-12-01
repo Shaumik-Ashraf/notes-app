@@ -1,6 +1,6 @@
 <%= turbo_stream.replace "alert" do %>
   <%= turbo_frame_tag "alert" do %>
-    <span style="color: green">Note saved successfully.</span>
+    <span style="color: green">Note saved successfully <%= @note.updated_at.strftime("%r %Z") %>.</span>
   <% end %>
 <% end %>
 
