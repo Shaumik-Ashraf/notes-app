@@ -67,7 +67,7 @@ TODO
 
 ```
 # Check for any notes to purge everyday at 2am
-* 2 * * * bin/rails notes:purge
+0 2 * * * bin/rails notes:purge
 ```
 
 ### Environment
