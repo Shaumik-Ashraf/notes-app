@@ -48,10 +48,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   def destroy
     @note.destroy!
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to notes_path, notice: "Note was successfully destroyed.", status: :see_other }
-    end
+    redirect_to notes_path, notice: "Note was successfully deleted.", status: :see_other
   end
 
   private

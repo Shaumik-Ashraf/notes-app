@@ -27,7 +27,14 @@
     <nav>
       <%= link_to "Notes App", root_url %>
     </nav>
-    <turbo-frame id="alert"></turbo-frame>
+    <turbo-frame id="alert">
+      <% if flash[:notice] %>
+          <span style="color:green"><%= flash[:notice] %></span>
+      <% end %>
+      <% if flash[:alert] %>
+          <span style="color:red"><%= flash[:alert] %></span>
+      <% end %>
+    </turbo-frame>
     <%= yield %>
   </body>
 </html>
