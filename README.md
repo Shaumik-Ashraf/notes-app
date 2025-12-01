@@ -6,8 +6,8 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 ## TODO:
 
-- add dev credentials
-- test solid cable w/ turbo stream
+- implement devise users with devise invitational and first user setup
+- implement user-based broadcasting
 
 ## Features _(work in progress)_
 
