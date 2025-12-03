@@ -25,7 +25,13 @@
 
   <body>
     <nav>
-      <%= link_to "Notes App", root_url %>
+      <%= link_to "Notes App", root_url %> |
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", user_session_path, data: { turbo_method: :delete } %> |
+        Signed in as <%= current_user.email %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+      <% end %>
     </nav>
     <turbo-frame id="alert">
       <% if flash[:notice] %>

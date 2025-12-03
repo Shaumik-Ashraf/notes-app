@@ -65,3 +65,6 @@ end
 
 # Markdown rendering
 gem "redcarpet", "~> 3.6"
+
+# User auth
+gem "devise", "~> 4.9"
