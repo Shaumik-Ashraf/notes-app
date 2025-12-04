@@ -1,15 +1,8 @@
 # Notes App
 
-> Work In Progress
+An ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
-This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
-
-## TODO:
-
-- implement devise users with devise invitational and first user setup
-- implement user-based broadcasting
-
-## Features _(work in progress)_
+## Features
 
 - Data encryption at rest
 - Data encryption in transit
@@ -18,6 +11,7 @@ This is a ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 - Server-side rendering and data control
 - Production-ready for AWS
 - Continuous Integration for better DevOps
+- User authentication and authorization
 
 ## Dependencies
 
@@ -77,3 +71,10 @@ TODO
 # Set to integer to autodelete notes after that many days; defaults to 30
 PURGE_NOTES_AFTER_DAYS=30
 ```
+
+## Backlog and future ideas
+
+- implement user-based turbo broadcasting to support multi-tab use
+- fine grained control on note auto-deletion
+- invite users with devise invitational
+- fix turbo post creation visual bugs (clear form; remove no posts text)
