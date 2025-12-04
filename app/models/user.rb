@@ -12,5 +12,4 @@ class User < ApplicationRecord
          :validatable
 
   has_many :notes
-
 end
