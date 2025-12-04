@@ -3,6 +3,8 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
+    flash.now.alert = "No users in database. Please create a user from console." if User.count == 0
+
     @notes = Note.order(updated_at: :desc)
   end
 
