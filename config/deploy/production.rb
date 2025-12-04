@@ -62,7 +62,7 @@
 
 server fetch(:fqdn),
        user: "ubuntu",
-       roles: %w{app},
+       roles: %w[app],
        ssh_options: {
          keys: [ fetch(:ssh_key_path) ],
          keys_only: true,
