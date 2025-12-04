@@ -1,11 +1,15 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index ]
   before_action :set_note, only: %i[ show edit update destroy ]
 
   # GET /notes
   def index
+    @notes = []
     flash.now.alert = "No users in database. Please create a user from console." if User.count == 0
 
-    @notes = Note.order(updated_at: :desc)
+    if user_signed_in?
+      @notes = Note.where(user: current_user).order(updated_at: :desc)
+    end
   end
 
   # GET /notes/1
@@ -56,7 +60,7 @@ class NotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
-      @note = Note.find(params.expect(:id))
+      @note = Note.find_by(id: params.expect(:id), user: current_user)
     end
 
     # Only allow a list of trusted parameters through.

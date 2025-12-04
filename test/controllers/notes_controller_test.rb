@@ -2,7 +2,9 @@ require "test_helper"
 
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @note = notes(:one)
+    p = SecureRandom.base58
+    @user = User.create(email: "notescontrollertest@example.com", password: p, password_confirmation: p)
+    @note = Note.create(body: "# Test", user: @user)
   end
 
   test "should get index" do
