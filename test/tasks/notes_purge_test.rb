@@ -17,8 +17,10 @@ class NotesPurgeTaskTest < ActiveSupport::TestCase
   end
 
   test "it deletes notes older than two days" do
-    note = Note.create(body: "delete me")
-    note.update(created_at: 10.days.ago)
+    p = "t" * 6
+    user = User.create!(email: "notespurgetasktest@example.com", password: p, password_confirmation: p)
+    note = Note.create!(body: "delete me", user:)
+    note.update!(created_at: 10.days.ago)
     assert_difference("Note.count", -1) do
       @task.invoke
     end

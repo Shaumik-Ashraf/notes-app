@@ -56,4 +56,7 @@ Rails.application.configure do
 
   # Override purge setting for test
   config.x.purge_notes_after = 2.days
+
+  # https://github.com/heartcombo/devise/issues/5794
+  config.eager_load = true
 end

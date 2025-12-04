@@ -27,7 +27,7 @@ class NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = Note.new(note_params)
+    @note = Note.new(note_params.merge({ user: current_user }))
 
     if @note.save
       respond_to do |format|
