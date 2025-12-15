@@ -71,6 +71,6 @@ gem "redcarpet", "~> 3.6"
 gem "devise", "~> 4.9"
 
 group :development do
-  gem "capistrano", "~> 3.19", require: false
+  gem "capistrano", "~> 3.20", require: false
   gem "capistrano-rails", "~> 1.7", require: false
 end
