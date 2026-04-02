@@ -46,6 +46,12 @@ When in editor, create a file like so:
 ```yml
 secret_key_base: <rails secret output>
 
+database:
+  username: <postgres username>
+  password: <postgres password>
+  host: <postgres host>
+  port: <postgres port>
+
 active_record_encryption:
   <corresponding rails db:credentials:init output>
 ```
