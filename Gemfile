@@ -67,8 +67,8 @@ end
 # Markdown rendering
 gem "redcarpet", "~> 3.6"
 
-# User auth
-gem "devise", "~> 4.9"
+# User authentication
+gem "devise", "~> 5.0"
 
 group :development do
   gem "capistrano", "~> 3.19", require: false

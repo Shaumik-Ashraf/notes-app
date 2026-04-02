@@ -15,7 +15,7 @@ An ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 ## Dependencies
 
-- Ruby 3.4.3
+- Ruby 3.4.9
 
 ### Tech Stack
 
