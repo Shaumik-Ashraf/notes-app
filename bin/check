@@ -6,7 +6,7 @@ echo "=== Checking Echo ==="
 echo "success"
 
 echo "=== Checking mise ==="
-mise --version
+.local/bin/mise --version
 
 echo "=== Checking ruby ==="
-mise exec ruby@3.4.9 -- ruby --version
+.local/bin/mise exec ruby@3.4.9 -- ruby --version

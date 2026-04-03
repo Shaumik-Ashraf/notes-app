@@ -7,16 +7,16 @@
 
 
 echo "=== Running Bundle Install ==="
-mise exec ruby@3.4.9 -- "bin/bundle check || bin/bundle install"
+.local/bin/mise exec ruby@3.4.9 -- "bin/bundle check || bin/bundle install"
 
 echo "=== Installing Thruster ==="
-mise exec ruby@3.4.9 -- "gem install thruster"
+.local/bin/mise exec ruby@3.4.9 -- "gem install thruster"
 
 echo "=== Preparing Database ==="
-mise exec ruby@3.4.9 -- "bin/rails db:create"
+.local/bin/mise exec ruby@3.4.9 -- "bin/rails db:create"
 
 echo "=== Compiling Assets ==="
-mise exec ruby@3.4.9 -- "bin/rails assets:precompile"
+.local/bin/mise exec ruby@3.4.9 -- "bin/rails assets:precompile"
 
 echo "=== Setup Done ==="
 
