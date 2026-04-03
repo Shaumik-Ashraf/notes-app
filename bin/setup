@@ -6,6 +6,8 @@
 #   Ruby 3.4.9 installable with mise (uses ruby-build)
 
 MISE="$HOME/.local/bin/mise"
+RAILS_ENV=production
+RACK_ENV=production
 
 echo "=== Running Bundle Install ==="
 $MISE exec ruby@3.4.9 -- bundle
@@ -20,5 +22,4 @@ echo "=== Compiling Assets ==="
 $MISE exec ruby@3.4.9 -- rails assets:precompile
 
 echo "=== Setup Done ==="
-
 

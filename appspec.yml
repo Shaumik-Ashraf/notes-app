@@ -9,6 +9,9 @@ hooks:
       timeout: 300
       runas: notes-app-production
   AfterInstall:
+    - location: sbin/permissions
+      timeout: 300
+      runas: root
     - location: bin/setup
       timeout: 300
       runas: notes-app-production
