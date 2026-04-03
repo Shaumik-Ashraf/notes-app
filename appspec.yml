@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/notes-app-production
+hooks:
+  BeforeInstall:
+    - location: bin/check
+      timeout: 300
+      runas: notes-app-production
+  AfterInstall:
+    - location: bin/setup
+      timeout: 300
+      runas: notes-app-production
+  ApplicationStart:
+    - location: sbin/start
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: sbin/stop
+      timeout: 300
+      runas: root

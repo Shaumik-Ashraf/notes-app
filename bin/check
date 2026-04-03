@@ -1,0 +1,12 @@
+#!/usr/bin/env -S bash -e
+#
+# Check that OS dependencies are in place
+
+echo "=== Checking Echo ==="
+echo "success"
+
+echo "=== Checking mise ==="
+mise --version
+
+echo "=== Checking ruby ==="
+mise exec ruby@3.4.9 -- ruby --version

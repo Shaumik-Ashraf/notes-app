@@ -1,0 +1,23 @@
+#!/usr/bin/env -S bash -e
+#
+# Setup Ruby on Rails application
+# Requirements:
+#   mise-en-place version manager installed
+#   Ruby 3.4.9 installable with mise (uses ruby-build)
+
+
+echo "=== Running Bundle Install ==="
+mise exec ruby@3.4.9 -- "bin/bundle check || bin/bundle install"
+
+echo "=== Installing Thruster ==="
+mise exec ruby@3.4.9 -- "gem install thruster"
+
+echo "=== Preparing Database ==="
+mise exec ruby@3.4.9 -- "bin/rails db:create"
+
+echo "=== Compiling Assets ==="
+mise exec ruby@3.4.9 -- "bin/rails assets:precompile"
+
+echo "=== Setup Done ==="
+
+
