@@ -8,16 +8,16 @@
 MISE="$HOME/.local/bin/mise"
 
 echo "=== Running Bundle Install ==="
-$MISE exec ruby@3.4.9 -- bin/bundle
+$MISE exec ruby@3.4.9 -- bundle
 
 echo "=== Installing Thruster ==="
 $MISE exec ruby@3.4.9 -- gem install thruster
 
 echo "=== Preparing Database ==="
-$MISE exec ruby@3.4.9 -- bin/rails db:create
+$MISE exec ruby@3.4.9 -- rails db:create
 
 echo "=== Compiling Assets ==="
-$MISE exec ruby@3.4.9 -- bin/rails assets:precompile
+$MISE exec ruby@3.4.9 -- rails assets:precompile
 
 echo "=== Setup Done ==="
 
