@@ -5,18 +5,19 @@
 #   mise-en-place version manager installed
 #   Ruby 3.4.9 installable with mise (uses ruby-build)
 
+MISE="$HOME/.local/bin/mise"
 
 echo "=== Running Bundle Install ==="
-.local/bin/mise exec ruby@3.4.9 -- "bin/bundle check || bin/bundle install"
+$MISE exec ruby@3.4.9 -- "bin/bundle check || bin/bundle install"
 
 echo "=== Installing Thruster ==="
-.local/bin/mise exec ruby@3.4.9 -- "gem install thruster"
+$MISE exec ruby@3.4.9 -- "gem install thruster"
 
 echo "=== Preparing Database ==="
-.local/bin/mise exec ruby@3.4.9 -- "bin/rails db:create"
+$MISE exec ruby@3.4.9 -- "bin/rails db:create"
 
 echo "=== Compiling Assets ==="
-.local/bin/mise exec ruby@3.4.9 -- "bin/rails assets:precompile"
+$MISE exec ruby@3.4.9 -- "bin/rails assets:precompile"
 
 echo "=== Setup Done ==="
 

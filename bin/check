@@ -2,11 +2,13 @@
 #
 # Check that OS dependencies are in place
 
+MISE="$HOME/.local/bin/mise"
+
 echo "=== Checking Echo ==="
 echo "success"
 
 echo "=== Checking mise ==="
-.local/bin/mise --version
+$MISE --version
 
 echo "=== Checking ruby ==="
-.local/bin/mise exec ruby@3.4.9 -- ruby --version
+$MISE exec ruby@3.4.9 -- ruby --version
