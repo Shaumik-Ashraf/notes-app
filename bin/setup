@@ -8,9 +8,18 @@
 MISE="$HOME/.local/bin/mise"
 RAILS_ENV=production
 RACK_ENV=production
+BUNDLE_DEPLOYMENT=true
+BUNDLE_GEMFILE="$HOME/Gemfile.lock"
+
+echo "=== Environment ==="
+echo "HOME: $HOME"
+echo "MISE: $MISE"
+echo "RAILS_ENV: $RAILS_ENV"
+echo "BUNDLE_DEPLOYMENT: $BUNDLE_DEPLOYMENT"
+echo "BUNDLE_GEMFILE: $BUNDLE_GEMFILE"
 
 echo "=== Running Bundle Install ==="
-$MISE exec ruby@3.4.9 -- bundle
+$MISE exec ruby@3.4.9 -- bundle --gemfile "$HOME/Gemfile"
 
 echo "=== Installing Thruster ==="
 $MISE exec ruby@3.4.9 -- gem install thruster
