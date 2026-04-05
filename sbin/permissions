@@ -5,5 +5,5 @@
 OWNER=notes-app-production
 TARGET=/home/notes-app-production
 
-chown $OWNER:$OWNER -R TARGET/*
-chown $OWNER:$OWNER TARGET/.
+chown $OWNER:$OWNER -R $TARGET/*
+chown $OWNER:$OWNER $TARGET/.
