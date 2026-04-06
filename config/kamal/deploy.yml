@@ -94,7 +94,8 @@ builder:
 # Use a different ssh user than root
 ssh:
   user: ubuntu
-
+  keys: [ "notes-app-ec2-pki.pem" ]
+  
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
 #   db:
