@@ -3,7 +3,7 @@
 # Check that OS dependencies are in place
 # This script is a hook for appspec.yml and AWS CodeDeploy
 
-Echo "=== Checking Echo ==="
+echo "=== Checking Echo ==="
 echo "success"
 
 echo "=== Checking Docker ==="
