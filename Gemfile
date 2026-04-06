@@ -68,4 +68,3 @@ gem "redcarpet", "~> 3.6"
 
 # User authentication
 gem "devise", "~> 5.0"
-
