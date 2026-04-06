@@ -5,18 +5,18 @@ files:
     destination: /home/ubuntu/deploy
 hooks:
   BeforeInstall:
-    - location: bin/check
+    - location: sbin/check
       timeout: 300
-      runas: ubuntu
+      runas: root
   AfterInstall:
     - location: sbin/permissions
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: bin/start
+    - location: sbin/start
       timeout: 300
-      runas: ubuntu
+      runas: root
   ApplicationStop:
-    - location: bin/stop
+    - location: sbin/stop
       timeout: 300
-      runas: ubuntu
+      runas: root
