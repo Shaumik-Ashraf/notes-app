@@ -1,0 +1,37 @@
+# docker-compose.yml
+# Production deployment: EC2 + AWS RDS
+#
+# App-only stack. Database is provided by AWS RDS — no local db service.
+# RDS connection details are supplied via .env on the host.
+#
+# See README.md Deployment section for usage.
+
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+
+    ports:
+      # Thruster listens on port 80 (EXPOSE 80 in Dockerfile).
+      - "80:80"
+      # --- Optional: Thruster-managed TLS via Let's Encrypt ---
+      # Set SSL_DOMAIN in .env and uncomment to enable ACME HTTPS.
+      # Also uncomment `config.assume_ssl = true` in config/environments/production.rb.
+      # - "443:443"
+
+    env_file:
+      - .env
+
+    environment:
+      RAILS_ENV: production
+      # Run Solid Queue's supervisor inside Puma (config/puma.rb line 38).
+      SOLID_QUEUE_IN_PUMA: "true"
+      RAILS_LOG_TO_STDOUT: "true"
+
+    volumes:
+      # Active Storage local disk files (config/storage.yml root: Rails.root.join("storage")).
+      - notes_storage:/rails/storage
+
+volumes:
+  notes_storage:

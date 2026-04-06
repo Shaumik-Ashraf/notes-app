@@ -62,20 +62,48 @@ active_record_encryption:
 
 ## Deployment
 
-TODO
+### Production (EC2 + AWS RDS)
+
+Uses `docker-compose.yml` — app container only; database is AWS RDS.
+
+1. Transfer source code to EC2 host (via CodeDeploy, scp, etc.)
+
+2. Follow step 4 from the Quick Start to setup production credentials
+
+3. Create .env file and set `RAILS_MASTER_KEY` to the key from last step
+```bash
+cp .env.example .env
+```
+
+3. Build and start
+```bash
+docker compose build
+docker compose up -d
+```
+
+5. Install the daily purge cron job
+```bash
+crontab crontab.txt
+```
 
 ### Cron Jobs
 
+The `crontab.txt` file at the repo root is installed on the host with `crontab crontab.txt`. It runs rake tasks via a one-off app container:
+
 ```
-# Check for any notes to purge everyday at 2am
-0 2 * * * bin/rails notes:purge
+# Delete notes older than PURGE_NOTES_AFTER_DAYS days — daily at 02:00
+0 2 * * * cd /home/ubuntu/notes-app && docker compose run --rm --no-deps --entrypoint="" app ./bin/rails notes:purge
 ```
 
 ### Environment
 
 ```
-# Set to integer to autodelete notes after that many days; defaults to 30
-PURGE_NOTES_AFTER_DAYS=30
+# Required
+RAILS_MASTER_KEY=          # decrypts config/credentials/production.yml.enc
+
+# Optional
+PURGE_NOTES_AFTER_DAYS=30  # auto-delete notes after this many days (default: 30)
+TLS_DOMAIN=                # set to enable Thruster's automatic Let's Encrypt TLS
 ```
 
 ## Backlog and future ideas
