@@ -1,4 +1,4 @@
 #!/bin/sh
 # This script is a hook for appspec.yml and AWS CodeDeploy
 
-docker compose down
+docker compose -f /home/ubuntu/deploy/docker-compose.yml down
