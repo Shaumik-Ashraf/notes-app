@@ -86,32 +86,32 @@ test:
 production:
   primary:
     <<: *default
-    database: notes_production
-    username: <%= ENV.fetch("DATABASE_USERNAME", nil) %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
-    host: <%= ENV.fetch("DATABASE_HOST", nil) %>
-    port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+    database: <%= Rails.application.credentials.dig(:database, :name) || "notes_app_production" %>
+    username: <%= ENV.fetch("DATABASE_USERNAME") { Rails.application.credentials.dig(:database, :username) } %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD") { Rails.application.credentials.dig(:database, :password) } %>
+    host: <%= ENV.fetch("DATABASE_HOST") { Rails.application.credentials.dig(:database, :host) || "localhost" } %>
+    port: <%= ENV.fetch("DATABASE_PORT") { Rails.application.credentials.dig(:database, :port) || 5432 } %>
   cache:
     <<: *default
-    database: notes_production_cache
-    username: <%= ENV.fetch("DATABASE_USERNAME", nil) %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
-    host: <%= ENV.fetch("DATABASE_HOST", nil) %>
-    port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+    database: <%= Rails.application.credentials.dig(:database, :name) || "notes_app_production" %>_cache
+    username: <%= ENV.fetch("DATABASE_USERNAME") { Rails.application.credentials.dig(:database, :username) } %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD") { Rails.application.credentials.dig(:database, :password) } %>
+    host: <%= ENV.fetch("DATABASE_HOST") { Rails.application.credentials.dig(:database, :host) || "localhost" } %>
+    port: <%= ENV.fetch("DATABASE_PORT") { Rails.application.credentials.dig(:database, :port) || 5432 } %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: notes_production_queue
-    username: <%= ENV.fetch("DATABASE_USERNAME", nil) %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
-    host: <%= ENV.fetch("DATABASE_HOST", nil) %>
-    port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+    database: <%= Rails.application.credentials.dig(:database, :name) || "notes_app_production" %>_queue
+    username: <%= ENV.fetch("DATABASE_USERNAME") { Rails.application.credentials.dig(:database, :username) } %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD") { Rails.application.credentials.dig(:database, :password) } %>
+    host: <%= ENV.fetch("DATABASE_HOST") { Rails.application.credentials.dig(:database, :host) || "localhost" } %>
+    port: <%= ENV.fetch("DATABASE_PORT") { Rails.application.credentials.dig(:database, :port) || 5432 } %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: notes_production_cable
-    username: <%= ENV.fetch("DATABASE_USERNAME", nil) %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
-    host: <%= ENV.fetch("DATABASE_HOST", nil) %>
-    port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+    database: <%= Rails.application.credentials.dig(:database, :name) || "notes_app_production" %>_cable
+    username: <%= ENV.fetch("DATABASE_USERNAME") { Rails.application.credentials.dig(:database, :username) } %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD") { Rails.application.credentials.dig(:database, :password) } %>
+    host: <%= ENV.fetch("DATABASE_HOST") { Rails.application.credentials.dig(:database, :host) || "localhost" } %>
+    port: <%= ENV.fetch("DATABASE_PORT") { Rails.application.credentials.dig(:database, :port) || 5432 } %>
     migrations_paths: db/cable_migrate
