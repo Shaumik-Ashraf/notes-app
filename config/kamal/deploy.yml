@@ -1,13 +1,13 @@
 # Name of your application. Used to uniquely configure containers.
-service: notes
+service: notes-app-production
 
 # Name of the container image (use your-user/app-name on external registries).
-image: notes
+image: shaumik-ashraf/notes-app
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 100.31.104.116
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -22,20 +22,20 @@ servers:
 #
 # proxy:
 #   ssl: true
-#   host: app.example.com
+#   host: ec2-100-31-104-116.compute-1.amazonaws.com
 
 # Where you keep your container images.
 registry:
   # Alternatives: hub.docker.com / registry.digitalocean.com / ghcr.io / ...
-  server: localhost:5555
-
+  # server: localhost:5555
+  # 
   # Needed for authenticated registries.
   # username: your-user
-
   # Always use an access token rather than real password when possible.
   # password:
   #   - KAMAL_REGISTRY_PASSWORD
-
+  server: ghcr.io
+  
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
@@ -92,8 +92,8 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: ubuntu
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
