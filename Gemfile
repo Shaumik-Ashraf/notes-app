@@ -30,8 +30,7 @@ gem "solid_cable"
 gem "bootsnap", require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-# Using Capistrano instead
-# gem "kamal", require: false
+gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
@@ -70,7 +69,3 @@ gem "redcarpet", "~> 3.6"
 # User authentication
 gem "devise", "~> 5.0"
 
-group :development do
-  gem "capistrano", "~> 3.19", require: false
-  gem "capistrano-rails", "~> 1.7", require: false
-end
