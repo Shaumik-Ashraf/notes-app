@@ -2,24 +2,21 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/notes-app-production
+    destination: /home/ubuntu/deploy
 hooks:
   BeforeInstall:
     - location: bin/check
       timeout: 300
-      runas: notes-app-production
+      runas: ubuntu
   AfterInstall:
     - location: sbin/permissions
       timeout: 300
       runas: root
-    - location: bin/setup
-      timeout: 300
-      runas: notes-app-production
   ApplicationStart:
-    - location: sbin/start
+    - location: bin/start
       timeout: 300
-      runas: root
+      runas: ubuntu
   ApplicationStop:
-    - location: sbin/stop
+    - location: bin/stop
       timeout: 300
-      runas: root
+      runas: ubuntu

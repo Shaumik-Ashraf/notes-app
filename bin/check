@@ -1,14 +1,12 @@
 #!/usr/bin/env -S bash -e
 #
 # Check that OS dependencies are in place
+# This script is a hook for appspec.yml and AWS CodeDeploy
 
-MISE="$HOME/.local/bin/mise"
-
-echo "=== Checking Echo ==="
+Echo "=== Checking Echo ==="
 echo "success"
 
-echo "=== Checking mise ==="
-$MISE --version
+echo "=== Checking Docker ==="
+docker stats --no-stream
 
-echo "=== Checking ruby ==="
-$MISE exec ruby@3.4.9 -- ruby --version
+echo "=== Success ==="

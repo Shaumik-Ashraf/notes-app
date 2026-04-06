@@ -1,0 +1,4 @@
+#!/bin/sh
+# This script is a hook for appspec.yml and AWS CodeDeploy
+
+docker compose up -d

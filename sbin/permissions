@@ -1,9 +1,10 @@
 #!/bin/sh
 #
 # Make all files in current directory owned by $OWNER
+# This script is a hook for appspec.yml and AWS CodeDeploy
 
-OWNER=notes-app-production
-TARGET=/home/notes-app-production
+OWNER=ubuntu
+TARGET=/home/ubuntu/deploy
 
 chown $OWNER:$OWNER -R $TARGET/*
 chown $OWNER:$OWNER $TARGET/.
