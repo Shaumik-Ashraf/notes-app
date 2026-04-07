@@ -64,13 +64,13 @@ active_record_encryption:
 
 ### First Time Start
 
-1. (Fork and) clone this repository. Optional: if you want to modify the app, ensure the CI/CD runs and a new container image is published to GitHub container registry.
+1. (Fork and) clone this repository. Optional: if you want to modify the app, ensure the CI/CD runs and a new container image is published to GitHub container registry; then modify config/deploy.yml to point to your image.
 
-2. Provision an AWS EC2 instance. Enter its public IPv4 address, public DNS, and SSH key filename into config/deploy.yml.
+2. Provision an AWS EC2 instance with an associated service role with Cloud Watch access. Enter its public IPv4 address, public DNS, and SSH key filename into config/deploy.yml.
 
 3. Install [Docker](https://www.docker.com/) to the EC2 instance.
 
-4. Provision an AWS RDS instance based off of PostgreSQL 16 with permissions to be privately accessed by the EC2 instance.
+4. Provision an AWS RDS instance based off of PostgreSQL 16 with access to/from the EC2 instance.
 
 5. Go to Quick Start step 4 and create your own production credentials. Replace `development` with `production` in the CLI commands and enter RDS credentials into the credentials file. 
 
@@ -85,13 +85,44 @@ GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal setu
 
 9. Verify the site is running successfully. TLS should be automatically configured.
 
+10. Go to user management and create the first user.
+
 ### Cron Jobs
 
-The `crontab.txt` file at the repo root is installed on the host with `crontab crontab.txt`. It runs rake tasks via a one-off app container:
+The `crontab.txt` file at the repo root must be installed on the host machine user's crontab. One way to do this is:
 
+```bash
+scp -i <ec2 key> ./crontab.txt ubuntu@<ec2 ip addr>:/home/ubuntu/
+ssh -i <ec2 key> ubuntu@<ec2 ip addr>
+crontab crontab.txt
 ```
-# Delete notes older than PURGE_NOTES_AFTER_DAYS days — daily at 02:00
-0 2 * * * cd /home/ubuntu/notes-app && docker compose run --rm --no-deps --entrypoint="" app ./bin/rails notes:purge
+
+### User Management
+
+To manage users, you must first remotely launch the interactive rails console. This will connect from your local machine to the remote production image and database.
+
+```bash
+GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal app exec 'bin/rails console'
+```
+
+Once inside the Rails console, you can use [Ruby ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html) to manipulate the database. The commands below will work from the Rails console.
+
+#### Create a User
+
+```ruby
+User.create!(email: "<new email>", password: "<user password>", password_confirmation: "<same password>")
+```
+
+#### Delete a User
+
+```ruby
+User.find_by(email: "<target email>").destroy!
+```
+
+#### Reset a User's password
+
+```ruby
+User.find_by(email: "<target email>").update!(password: "<new password>", password_confirmation: "<identical password>")
 ```
 
 ### Environment
