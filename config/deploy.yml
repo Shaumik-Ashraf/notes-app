@@ -17,17 +17,13 @@ servers:
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
-# proxy:
-#   ssl: true
-#   host: app.example.com
-  # Proxy connects to your container on port 80 by default.
-  # app_port: 3000
+proxy:
+  ssl: true
+  host: ec2-100-31-104-116.compute-1.amazonaws.com
 
 # Credentials for your image host.
 registry:
-  # Specify the registry server, if you're not using Docker Hub
   server: ghcr.io
-  # Using public image - username/password not required
   username:
     - KAMAL_REGISTRY_USERNAME
   password:
@@ -41,7 +37,6 @@ builder:
   #   RUBY_VERSION: <%= ENV["RBENV_VERSION"] || ENV["rvm_ruby_string"] || "#{RUBY_ENGINE}-#{RUBY_ENGINE_VERSION}" %>
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
-#
 env:
   # clear:
   #   DB_HOST: 192.168.0.2
@@ -50,12 +45,10 @@ env:
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal app logs -r job" will tail logs from the first server in the job section.
-#
 aliases:
   shell: app exec --interactive --reuse "bash"
 
 # Use a different ssh user than root
-#
 ssh:
   user: ubuntu
   keys: [ "notes-app-ec2-pki.pem" ]
@@ -68,18 +61,15 @@ volumes:
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
 # version inside the asset_path.
-#
 # asset_path: /app/public/assets
 
 # Configure rolling deploys by setting a wait time between batches of restarts.
-#
 # boot:
 #   limit: 10 # Can also specify as a percentage of total hosts, such as "25%"
 #   wait: 2
 
-# Uses AWS and not Kamal for accessory services
-# Use accessory services (secrets come from .kamal/secrets).
-#
+# Use accessory services (secrets come from .kamal/secrets)
+# This app uses AWS instead
 # accessories:
 #   db:
 #     image: mysql:8.0

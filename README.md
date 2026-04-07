@@ -62,29 +62,28 @@ active_record_encryption:
 
 ## Deployment
 
-### Production (EC2 + AWS RDS)
+### First Time Start
 
-Uses `docker-compose.yml` — app container only; database is AWS RDS.
+1. (Fork and) clone this repository. Optional: if you want to modify the app, ensure the CI/CD runs and a new container image is published to GitHub container registry.
 
-1. Transfer source code to EC2 host (via CodeDeploy, scp, etc.)
+2. Provision an AWS EC2 instance. Enter its public IPv4 address, public DNS, and SSH key filename into config/deploy.yml.
 
-2. Follow step 4 from the Quick Start to setup production credentials
+3. Install [Docker](https://www.docker.com/) to the EC2 instance.
 
-3. Create .env file and set `RAILS_MASTER_KEY` to the key from last step
+4. Provision an AWS RDS instance based off of PostgreSQL 16 with permissions to be privately accessed by the EC2 instance.
+
+5. Go to Quick Start step 4 and create your own production credentials. Replace `development` with `production` in the CLI commands and enter RDS credentials into the credentials file. 
+
+6. Obtain a GitHub classic access token.
+
+7. Run the command below, replacing your username and token accordingly:
 ```bash
-cp .env.example .env
+GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal setup
 ```
 
-3. Build and start
-```bash
-docker compose build
-docker compose up -d
-```
+8. Go to Cron Jobs to install recurring tasks.
 
-5. Install the daily purge cron job
-```bash
-crontab crontab.txt
-```
+9. Verify the site is running successfully. TLS should be automatically configured.
 
 ### Cron Jobs
 
@@ -103,7 +102,12 @@ RAILS_MASTER_KEY=          # decrypts config/credentials/production.yml.enc
 
 # Optional
 PURGE_NOTES_AFTER_DAYS=30  # auto-delete notes after this many days (default: 30)
-TLS_DOMAIN=                # set to enable Thruster's automatic Let's Encrypt TLS
+```
+
+### Re-deployment
+
+```
+GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal deploy
 ```
 
 ## Backlog and future ideas
