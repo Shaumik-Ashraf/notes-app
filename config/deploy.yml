@@ -30,10 +30,10 @@ registry:
   server: ghcr.io
 
   # Using public image - username/password not required
-  # username: foo
-  # Always use an access token rather than real password (pulled from .kamal/secrets).
-  # password:
-  #   - KAMAL_REGISTRY_PASSWORD
+  username:
+    - ""
+  password:
+    - ""
 
 # Configure builder setup.
 builder:
