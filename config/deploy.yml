@@ -32,7 +32,7 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
-retain_containers: 1
+retain_containers: 2
     
 # Configure builder setup.
 builder:
