@@ -36,5 +36,6 @@
 /config/*.key
 /config/credentials/*.key
 *.pem
-*.rsa
+*.key
+*.crt
 
