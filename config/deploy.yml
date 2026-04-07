@@ -20,7 +20,9 @@ servers:
 proxy:
   ssl: true
   host: ec2-100-31-104-116.compute-1.amazonaws.com
-
+  forward_headers: true
+  ssl_redirect: false # enable http
+  
 # Credentials for your image host.
 registry:
   server: ghcr.io
