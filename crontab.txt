@@ -16,4 +16,4 @@
 #   --entrypoint=""  bypass bin/docker-entrypoint so db:prepare is not re-run
 
 # Delete notes older than PURGE_NOTES_AFTER_DAYS days (default: 30) — daily at 02:00
-0 2 * * * cd /home/ubuntu/notes-app && docker compose run --rm --no-deps --entrypoint="" app ./bin/rails notes:purge
+0 2 * * * cd /home/ubuntu && docker run --rm --no-deps --entrypoint="" ghcr.io/shaumik-ashraf/notes-app ./bin/rails notes:purge

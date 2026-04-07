@@ -60,6 +60,9 @@ volumes:
 # Connect Docker to AWS CloudWatch
 logging:
   driver: awslogs
+  options:
+    awslogs-group: kamal-notes-app-production
+    awslogs-create-group: true
   
 # This app currently does not use the asset pipeline
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
