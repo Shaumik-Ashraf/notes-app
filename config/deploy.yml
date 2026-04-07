@@ -1,5 +1,5 @@
 # Name of your application. Used to uniquely configure containers.
-service: notes-app
+service: notes-app-production
 
 # Name of the container image.
 image: shaumik-ashraf/notes-app
@@ -7,7 +7,7 @@ image: shaumik-ashraf/notes-app
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 100.31.104.116
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -17,9 +17,9 @@ servers:
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
-proxy:
-  ssl: true
-  host: app.example.com
+# proxy:
+#   ssl: true
+#   host: app.example.com
   # Proxy connects to your container on port 80 by default.
   # app_port: 3000
 
