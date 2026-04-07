@@ -1,5 +1,7 @@
 # Notes App
 
+[![CI](https://github.com/Shaumik-Ashraf/notes-app/actions/workflows/ci.yml/badge.svg)](https://github.com/Shaumik-Ashraf/notes-app/actions/workflows/ci.yml)
+
 An ethereal note-taking app in Ruby on Rails 8, deployed on AWS.
 
 ## Features
