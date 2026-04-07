@@ -60,7 +60,8 @@ aliases:
 #
 ssh:
   user: ubuntu
-
+  keys: [ "notes-app-ec2-pki.pem" ]
+  
 # Use a persistent storage volume.
 volumes:
   - "notes_storage:/rails/storage"
