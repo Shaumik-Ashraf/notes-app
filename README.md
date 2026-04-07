@@ -76,24 +76,25 @@ active_record_encryption:
 
 5. Go to Quick Start step 4 and create your own production credentials. Replace `development` with `production` in the CLI commands and enter RDS credentials into the credentials file. 
 
-6. Obtain a GitHub classic access token.
-
-7. Run the command below, replacing your username and token accordingly:
-```bash
-GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal setup
-```
-
-8. Go to Cron Jobs to install recurring tasks.
-
-9. Generate self-signed TLS certificates on local machine. If you require professional TLS certificates you need to purchase a domain and use AWS Route 53 or use AWS CloudFront.
-
+6. Generate self-signed TLS certificates on local machine. If you require professional TLS certificates you need to purchase a domain and use AWS Route 53.
 ```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout selfsigned.key -out selfsigned.crt
 ```
 
-10. Verify the site is running successfully. TLS should be automatically configured.
+7. Obtain a GitHub classic access token.
 
-11. Go to user management and create the first user.
+8. Run the command below, replacing your username and token accordingly:
+```bash
+GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal setup
+```
+
+9. Verify the site is running successfully. TLS should be automatically configured.
+
+10. Go to [Cron Jobs](#cron-jobs) and install the crontab.
+
+11. Go to [User Management](#user-management) and create the first user.
+
+12. Now sign in on the website and confirm its all working.
 
 ### Cron Jobs
 
