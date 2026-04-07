@@ -83,9 +83,15 @@ GITHUB_USERNAME=<your username> GITHUB_TOKEN=<your token> bundle exec kamal setu
 
 8. Go to Cron Jobs to install recurring tasks.
 
-9. Verify the site is running successfully. TLS should be automatically configured.
+9. Generate self-signed TLS certificates on the EC2 instance. If you require professional TLS certificates you need to purchase a domain and use AWS Route 53 or use AWS CloudFront.
 
-10. Go to user management and create the first user.
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt
+```
+
+10. Verify the site is running successfully. TLS should be automatically configured.
+
+11. Go to user management and create the first user.
 
 ### Cron Jobs
 
