@@ -19,8 +19,8 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl:
-    certificate_pem: /etc/ssl/certs/selfsigned.crt
-    private_key_pem: /etc/ssl/private/selfsigned.pem
+    certificate_pem: CERTIFICATE_PEM
+    private_key_pem: PRIVATE_KEY_PEM
   host: ec2-100-31-104-116.compute-1.amazonaws.com
   forward_headers: true
   
