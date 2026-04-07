@@ -33,7 +33,7 @@ registry:
   username:
     - ""
   password:
-    - ""
+    - KAMAL_REGISTRY_PASSWORD
 
 # Configure builder setup.
 builder:
