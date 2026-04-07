@@ -25,13 +25,11 @@ servers:
 
 # Credentials for your image host.
 registry:
-  # server: localhost:5555
   # Specify the registry server, if you're not using Docker Hub
   server: ghcr.io
-
   # Using public image - username/password not required
   username:
-    - ""
+    - KAMAL_REGISTRY_USERNAME
   password:
     - KAMAL_REGISTRY_PASSWORD
 
