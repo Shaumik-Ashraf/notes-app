@@ -32,6 +32,8 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
+retain_containers: 1
+    
 # Configure builder setup.
 builder:
   arch: amd64
